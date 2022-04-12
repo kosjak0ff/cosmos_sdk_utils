@@ -15,7 +15,7 @@ PERIOD_VALUE=${11:-100}
 ROUND=0
 BROADCAST_MODE="async" 
 
-SEQ=$(${PATH_TO_SERVICE} q account ${ACCOUNT} -o json | jq '.sequence | tonumber')
+SEQ=$(${PATH_TO_SERVICE} q account ${ACCOUNT} --node ${NODE} -o json | jq '.sequence | tonumber')
 
 while :
 do
@@ -42,6 +42,7 @@ do
         --note $MEMO \
         --broadcast-mode $BROADCAST_MODE \
         --sequence $SEQ \
+        --node ${NODE}
         --timeout-height $(($CURRENT_BLOCK + 5)) -y | \
         jq '.raw_log')
 
