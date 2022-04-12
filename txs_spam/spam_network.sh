@@ -42,7 +42,7 @@ do
         --note $MEMO \
         --broadcast-mode $BROADCAST_MODE \
         --sequence $SEQ \
-        --node ${NODE}
+        --node ${NODE} \
         --timeout-height $(($CURRENT_BLOCK + 5)) -y | \
         jq '.raw_log')
 
